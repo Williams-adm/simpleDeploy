@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index(){
-        $discount = Customer::paginate();
+    public function index(Request $request){
+        $perPage = $request->get('per_page', 15);
+        $discount = Customer::paginate($perPage);
         return new CustomerCollection($discount);
     }
 

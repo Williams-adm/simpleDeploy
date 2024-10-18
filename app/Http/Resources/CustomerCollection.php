@@ -21,6 +21,7 @@ class CustomerCollection extends ResourceCollection
                     'full_name' => $customer->name . ' ' . $customer->paternal_surname . ' ' . $customer->maternal_surname,
                     'type_document' => $customer->type_document,
                     'n_document' => $customer->n_document,
+                    'phone' => $customer->prefix . " " . $customer->phone,
                     'email' => $customer->email,
                 ];
             })->all(),
