@@ -24,17 +24,17 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'between:3,65'],
-            'paternal_surname' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'between:3,65'],
-            'maternal_surname' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'between:3,65'],
+            'name' => ['required', 'string', 'between:3,65'],
+            'paternal_surname' => ['required', 'string', 'between:3,65'],
+            'maternal_surname' => ['required', 'string', 'between:3,65'],
             'type_document' => ['required', 'string', Rule::in(['DNI', 'PASAPORTE'])],
-            'n_document' => ['required', 'numeric', 'digits_between:6,15'],
+            'n_document' => ['required', 'numeric', 'digits_between:3,15'],
             'date_of_birth' => ['nullable', 'date_format:Y-m-d'],
             'email' => ['nullable', 'email:rfc,dns', 'unique:customers,email'],
-            'country' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'max:20'],
-            'region' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'max:60'],
-            'province' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'max:60'],
-            'city' => ['required', 'string', 'regex:/^[\p{L}\s]+$/u', 'max:60'],
+            'country' => ['required', 'string', 'max:20'],
+            'region' => ['required', 'string', 'max:60'],
+            'province' => ['required', 'string', 'max:60'],
+            'city' => ['required', 'string', 'max:60'],
             'street' => ['required', 'string', 'max:150'],
             'prefix' => ['nullable', 'string', 'between:2,5', 'required_with:phone'],
             'phone' => ['nullable', 'numeric', 'digits_between:2,12', 'required_with:prefix']
